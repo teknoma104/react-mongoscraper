@@ -1,0 +1,57 @@
+#header-top {
+  width: 100%;
+  z-index: 100;
+  margin-top: -25px;
+  background-color: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  padding-top: 28px;
+  padding-bottom: 3px;
+  font-weight: 400;
+}
+
+#nav-menu-links a {
+  color: white;
+}
+
+#nav-menu-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+body {
+  background: rgba(115,97,78,0.34);
+  background-image: url("../img/transparent_stone_bg.png");
+}
+
+#header {
+  height: 248px;
+  background-image: url("../img/bannerbackground.png");
+}
+
+.mh-articles {
+  margin-bottom: 15px;
+}
+
+.card-footer{
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
+
+.card-header {
+  height: 150px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.otherNotes {
+  display: inline-block;
+  width: 90%
+}
+
+.deleteComment {
+	display: inline-block;
+}
