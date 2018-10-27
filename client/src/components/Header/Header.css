@@ -1,0 +1,16 @@
+#header {
+    height: 248px;
+    background-image: url("../img/bannerbackground.png");
+}
+
+#header-top {
+    width: 100%;
+    z-index: 100;
+    margin-top: -25px;
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    padding-top: 28px;
+    padding-bottom: 3px;
+    font-weight: 400;
+}
