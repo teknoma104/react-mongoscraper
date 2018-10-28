@@ -1,11 +1,13 @@
 #header {
     height: 248px;
-    background-image: url("../img/bannerbackground.png");
+    background-image: url("/assets/img/bannerbackground.png");
+    position: relative;
 }
 
 #header-top {
     width: 100%;
-    z-index: 100;
+    z-index: 99;
+    position: fixed;
     margin-top: -25px;
     background-color: rgba(0,0,0,0.5);
     border: none;

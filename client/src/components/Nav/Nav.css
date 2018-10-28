@@ -1,0 +1,10 @@
+#nav-menu-links a {
+    color: white;
+}
+  
+#nav-menu-links a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+li { cursor: pointer; }

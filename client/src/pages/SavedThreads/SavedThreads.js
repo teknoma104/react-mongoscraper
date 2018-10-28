@@ -24,8 +24,6 @@ const SavedThreads = () => (
                                     title={article.title}
                                     link={article.link}
                                     preview={article.preview}
-
-
                                 />
                             ))}
 

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Nav.css";
+import "./Title.css";
 
-const Nav = () => (
+const Title = () => (
     <ul className="nav nav-pills justify-content-center" id="nav-menu-links">
         <li className="nav-item">
             <a className="nav-link" href="/">Home</a>
@@ -18,4 +18,4 @@ const Nav = () => (
     </ul>
 );
 
-export default Nav;
+export default Title;
