@@ -1,1 +1,1 @@
-export { default } from "./SavedThread.js";
+export { default } from "./SavedThreads.js";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
-import Card from "../../components/Card";
+import ScrapeCard from "../../components/ScrapeCard";
 import {CardList} from "../../components/CardList";
 import API from "../../api/scraper.js";
 
@@ -32,7 +32,7 @@ class Main extends Component {
                             <CardList>
                                 {
                                     this.state.articles.map(article => (
-                                        <Card
+                                        <ScrapeCard
                                             key={article._id}
                                             _id={article._id}
                                             title={article.title}

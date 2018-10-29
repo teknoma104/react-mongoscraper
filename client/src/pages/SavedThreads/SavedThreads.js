@@ -1,43 +1,68 @@
-import React from "react";
+import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
-import Card from "../../components/Card";
-import CardList from "../../components/CardList";
-import Modal from "../../components/Modal";
+import SavedCard from "../../components/SavedCard";
+import {CardList} from "../../components/CardList";
+import API from "../../api/scraper.js";
+// import Modal from "../../components/Modal";
 
-const SavedThreads = () => (
-    <Container fluid>
-        <Container fluid>
-            <Row>
-                <Col size="md-12" className="text-center">
-                    <h1>Your Saved Threads</h1>
-                </Col>
-            </Row>
-            <Row>
-                <Col size="md-12">
-                    {this.state.articles.length ? (
-                        <CardList>
+class SavedThreads extends Component {
 
-                            {this.state.articles.map(article => (
-                                <Card
-                                    key={article._id}
-                                    _id={article._id}
-                                    title={article.title}
-                                    link={article.link}
-                                    preview={article.preview}
-                                />
-                            ))}
+    state = {
+        savedArticles: []
+    };
 
-                        </CardList>
+    componentDidMount() {
+        this.getSavedArticles();
+    }
 
-                    ) : (
-                            <h3>No Results to Display</h3>
-                        )}
+    getSavedArticles = () => {
+        API.getSavedThreads()
+            .then(response =>
+                this.setState({ savedArticles: response.data })
+            )
+            .catch(err => console.log(err));
+    }
 
-                </Col>
-            </Row>
-        </Container>
-    <Modal></Modal>
-    </Container>
-);
+
+    render() {
+        return (
+            <Container fluid>
+                <Container fluid>
+                    <Row>
+                        <Col size="md-12" className="text-center">
+                            <h1>Your Saved Threads</h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col size="md-12">
+                            {this.state.savedArticles.length ? (
+                                <CardList>
+                                    {
+                                        this.state.savedArticles.map(article => (
+                                            <SavedCard
+                                                key={article._id}
+                                                _id={article._id}
+                                                title={article.title}
+                                                link={article.link}
+                                                preview={article.preview}
+                                            />
+                                        ))}
+                                </CardList>
+                            ) : (
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5>No saved Monster Hunter reddit threads found! Go back to the home page and save some reddit threads via Save Button.</h5>
+                                        </div>
+                                    </div>
+                                )}
+
+                        </Col>
+                    </Row>
+                </Container>
+                {/* <Modal></Modal> */}
+            </Container>
+        )
+    };
+}
 
 export default SavedThreads;

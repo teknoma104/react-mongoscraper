@@ -12,6 +12,10 @@ const API = {
         return axios.get("/api/articles/");
     },
 
+    getSavedThreads: function () {
+        return axios.get("/api/articles/saved")
+    },
+
     // Deletes everything in the collection
     deleteEverything: function () {
         return axios.get("/api/deleteall");

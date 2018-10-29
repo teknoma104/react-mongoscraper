@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main";
+import SavedThreads from "./pages/SavedThreads";
 import NoMatch from "./pages/NoMatch";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
@@ -16,20 +17,21 @@ const App = () => (
             </Header>
             <Container>
                 {/* <div> */}
-                    <Jumbotron
-                        className="text-center"
-                    >
-                        <img src="/assets/img/monster_hunter_logo.png" className="rounded mx-auto d-block" width="900px" alt="" />
-                        <h3>Welcome to the Monster Hunter Reddit Scraper!</h3>
-                        <span id="info-text"></span>
-                        <hr />
-                    </Jumbotron>
-                    <Row>
-                        <Switch>
-                            <Route exact path="/" component={Main} />
-                            <Route component={NoMatch} />
-                        </Switch>
-                    </Row>
+                <Jumbotron
+                    className="text-center"
+                >
+                    <img src="/assets/img/monster_hunter_logo.png" className="rounded mx-auto d-block" width="900px" alt="" />
+                    <h3>Welcome to the Monster Hunter Reddit Scraper!</h3>
+                    <span id="info-text"></span>
+                    <hr />
+                </Jumbotron>
+                <Row>
+                    <Switch>
+                        <Route exact path="/" component={Main} />
+                        <Route exact path="/api/articles/saved" component={SavedThreads} />
+                        <Route component={NoMatch} />
+                    </Switch>
+                </Row>
                 {/* </div> */}
             </Container>
         </div>

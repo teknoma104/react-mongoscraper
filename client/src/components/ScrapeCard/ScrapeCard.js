@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.css";
+import "./ScrapeCard.css";
 
 const Card = props => (
     <div
@@ -22,20 +22,10 @@ const Card = props => (
         <div className="card-footer">
             <button
                 type="button"
-                className="btn btn-dark addNote"
-                data-toggle="modal"
-                data-target={`#noteModal${props._id}`}
-                data-id={props._id}
-            >
-                Add a Comment
-                </button>
-            <button
-                type="button"
-                className="btn btn-danger removeArticle"
-                data-id={props._id}
-            >
-                Remove Saved Thread
-                </button>
+                class="btn btn-dark save"
+                data-id={props._id}>
+                Save Article
+            </button>
         </div>
     </div>
 );

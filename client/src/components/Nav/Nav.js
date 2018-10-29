@@ -7,7 +7,7 @@ const Nav = () => (
             <a className="nav-link" href="/">Home</a>
         </li>
         <li className="nav-item">
-            <a className="nav-link" href="/saved">Saved Threads</a>
+            <a className="nav-link" href="/api/articles/saved">Saved Threads</a>
         </li>
         <li className="nav-item">
             <a className="nav-link active" id="scrape">Scrape MH Reddit</a>
