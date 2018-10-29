@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import Card from "../../components/Card";
-import CardList from "../../components/CardList";
+import {CardList} from "../../components/CardList";
 import API from "../../api/scraper.js";
 
 class Main extends Component {
@@ -12,10 +12,10 @@ class Main extends Component {
     };
 
     componentDidMount() {
-        this.getAllThreads();
+        this.getAllArticles();
     }
 
-    getAllThreads = () => {
+    getAllArticles = () => {
         API.getAllThreads()
             .then(response =>
                 this.setState({ articles: response.data })
@@ -31,28 +31,21 @@ class Main extends Component {
                         {this.state.articles.length ? (
                             <CardList>
                                 {
-                                    this.state.articles.map(article => {
-                                        return (
-
-                                            <Card
-                                                key={article._id}
-                                                _id={article._id}
-                                                title={article.title}
-                                                link={article.link}
-                                                preview={article.preview}
-                                            />
-                                        );
-                                    }
-                                    )
-                                }
+                                    this.state.articles.map(article => (
+                                        <Card
+                                            key={article._id}
+                                            _id={article._id}
+                                            title={article.title}
+                                            link={article.link}
+                                            preview={article.preview}
+                                        />
+                                    ))}
                             </CardList>
-
                         ) : (
                                 <div class="card">
                                     <div class="card-body">
                                         <h5>No scraped Monster Hunter reddit threads found! Click the "Scrape MH Reddit" link to populate some reddit thread links here.</h5>
                                     </div>
-
                                 </div>
                             )}
 
