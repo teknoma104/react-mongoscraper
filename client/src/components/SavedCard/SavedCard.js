@@ -18,14 +18,24 @@ const Card = props => (
                 Link To MH Sub-Reddit Thread or Related Thread Link
             </a>
         </div>
-        <div class="w-100"></div>
+        <div className="w-100"></div>
         <div className="card-footer">
             <button
                 type="button"
-                class="btn btn-dark save"
-                data-id={props._id}>
-                Save Article
-            </button>
+                className="btn btn-dark addNote"
+                data-toggle="modal"
+                data-target={`#noteModal${props._id}`}
+                data-id={props._id}
+            >
+                Add a Comment
+                </button>
+            <button
+                type="button"
+                className="btn btn-danger removeArticle"
+                data-id={props._id}
+            >
+                Remove Saved Thread
+                </button>
         </div>
     </div>
 );

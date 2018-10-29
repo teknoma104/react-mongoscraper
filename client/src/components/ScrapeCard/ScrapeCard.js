@@ -18,12 +18,13 @@ const Card = props => (
                 Link To MH Sub-Reddit Thread or Related Thread Link
             </a>
         </div>
-        <div class="w-100"></div>
-        <div className="card-footer">
+        <div className="w-100"></div>
+        <div className="card-footer text-right">
             <button
                 type="button"
-                class="btn btn-dark save"
-                data-id={props._id}>
+                className="btn btn-dark save"
+                data-id={props._id}
+                onClick={() => props.saveThisArticle(props._id)}>
                 Save Article
             </button>
         </div>

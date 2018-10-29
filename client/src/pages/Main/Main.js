@@ -23,6 +23,16 @@ class Main extends Component {
             .catch(err => console.log(err));
     }
 
+    saveThisArticle = (id) => {
+        console.log("Save button clicked");
+        console.log("testing id:  " + id);
+        API.saveThisThread(id)
+        .then(function (data) {
+            console.log(data);
+        })
+        .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <Container fluid>
@@ -38,13 +48,14 @@ class Main extends Component {
                                             title={article.title}
                                             link={article.link}
                                             preview={article.preview}
+                                            saveThisArticle={this.saveThisArticle}
                                         />
                                     ))}
                             </CardList>
                         ) : (
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5>No scraped Monster Hunter reddit threads found! Click the "Scrape MH Reddit" link to populate some reddit thread links here.</h5>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5>No scraped Monster Hunter Reddit threads found! Click the "Scrape MH Reddit" link at the top to populate some Reddit thread links here.</h5>
                                     </div>
                                 </div>
                             )}

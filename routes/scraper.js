@@ -155,18 +155,23 @@ router.get("/api/articles/:id", function (req, res) {
 
 // Route to get all articles with saved flag boolean true
 router.get("/api/articles/saved", function (req, res) {
+    console.log("attempting to get all saved threads with save=true");
     db.Article.find({ "saved": true }).populate("notes")
         .then(function (articles) {
+            console.log("testing saved threads");
+            console.log(articles);
             var hbsObject = {
                 article: articles
             };
-            res.render("saved", hbsObject);
+            res.json(hbsObject);
         });
 });
 
 
 // Route for updating article saved attribute
 router.post("/api/articles/save/:id", function (req, res) {
+    console.log(req.params.id);
+
     // Use the article id to find and update its saved boolean
     db.Article.findOneAndUpdate({ "_id": req.params.id }, { "saved": true })
         // Execute the above query

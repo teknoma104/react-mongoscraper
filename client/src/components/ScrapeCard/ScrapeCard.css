@@ -2,12 +2,21 @@
     margin-bottom: 15px;
 }
 
+.card {
+    max-width: 100%;
+}
+
 .card-header {
     height: 150px;
     width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.card-body {
+    flex: 1;
+    word-wrap: break-all;
 }
 
 .card-footer{

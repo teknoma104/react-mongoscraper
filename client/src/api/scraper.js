@@ -13,13 +13,17 @@ const API = {
     },
 
     getSavedThreads: function () {
-        return axios.get("/api/articles/saved")
+        return axios.get("/api/articles/saved");
     },
 
     // Deletes everything in the collection
     deleteEverything: function () {
-        return axios.get("/api/deleteall");
+        return axios.delete("/api/deleteall");
+    },
+    saveThisThread: function (id) {
+        return axios.post("/api/articles/save/" + id);
     }
+
 }
 
 export default API

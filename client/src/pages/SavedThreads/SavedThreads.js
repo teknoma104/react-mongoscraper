@@ -17,8 +17,11 @@ class SavedThreads extends Component {
 
     getSavedArticles = () => {
         API.getSavedThreads()
-            .then(response =>
+            .then(function (response) {
+                console.log("Getting articles with saved = true");
+                console.log(response);
                 this.setState({ savedArticles: response.data })
+            }
             )
             .catch(err => console.log(err));
     }
@@ -49,9 +52,9 @@ class SavedThreads extends Component {
                                         ))}
                                 </CardList>
                             ) : (
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5>No saved Monster Hunter reddit threads found! Go back to the home page and save some reddit threads via Save Button.</h5>
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <h5>No saved Monster Hunter reddit threads found! Go back to the home page and save some Reddit threads with the Save Button.</h5>
                                         </div>
                                     </div>
                                 )}
