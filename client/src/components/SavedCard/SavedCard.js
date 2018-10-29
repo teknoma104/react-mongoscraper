@@ -19,7 +19,7 @@ const Card = props => (
             </a>
         </div>
         <div className="w-100"></div>
-        <div className="card-footer">
+        <div className="card-footer text-right">
             <button
                 type="button"
                 className="btn btn-dark addNote"

@@ -21,7 +21,6 @@ class App extends Component {
         API.deleteEverything()
             .then(function (data) {
                 console.log(data)
-                this.setState({ articles: [] })
                 window.location = "/"
             })
             .catch(err => console.log(err));
