@@ -12,10 +12,12 @@ class SavedThreads extends Component {
     };
 
     componentDidMount() {
+        console.log("saved thread page didmount, calling getSavedArticles()");
         this.getSavedArticles();
     }
 
     getSavedArticles = () => {
+        console.log("getSavedArticle function called");
         API.getSavedThreads()
             .then(function (response) {
                 console.log("Getting articles with saved = true");

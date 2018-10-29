@@ -153,17 +153,33 @@ router.get("/api/articles/:id", function (req, res) {
         });
 });
 
+// // Route to get all articles with saved flag boolean true
+// router.get("/api/savedarticles123", function (req, res) {
+//     console.log("attempting to get all saved threads with save=true");
+//     db.Article.find({ "saved": true }).populate("notes")
+//         .then(function (articles) {
+//             console.log("testing saved threads");
+//             console.log(articles);
+//             var hbsObject = {
+//                 article: articles
+//             };
+//             res.render("index", hbsObject);
+//             // res.json(hbsObject);
+//         });
+// });
+
 // Route to get all articles with saved flag boolean true
-router.get("/api/articles/saved", function (req, res) {
+router.get("/api/savedarticles", function (req, res) {
     console.log("attempting to get all saved threads with save=true");
     db.Article.find({ "saved": true }).populate("notes")
-        .then(function (articles) {
-            console.log("testing saved threads");
-            console.log(articles);
-            var hbsObject = {
-                article: articles
-            };
-            res.json(hbsObject);
+        .then(function (dbArticle) {
+            console.log(dbArticle);
+            // If we were able to successfully find any saved Articles, send it back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
         });
 });
 

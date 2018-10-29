@@ -7,11 +7,11 @@ import API from "../../api/scraper.js";
 class Main extends Component {
 
     state = {
-        articles: [],
-        savedArticles: []
+        articles: []
     };
 
     componentDidMount() {
+        console.log("main page didmount, calling getAllArticles()");
         this.getAllArticles();
     }
 
