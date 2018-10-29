@@ -9,16 +9,16 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 //this renders the homepage
-router.get("/", function (req, res) {
+// router.get("/", function (req, res) {
 
-    db.Article.find({}, function (error, data) {
-        var hbsObject = {
-            article: data
-        };
-        console.log(hbsObject);
-        res.render("index", hbsObject);
-    });
-});
+//     db.Article.find({}, function (error, data) {
+//         var hbsObject = {
+//             article: data
+//         };
+//         console.log(hbsObject);
+//         res.render("index", hbsObject);
+//     });
+// });
 
 // A GET route for scraping the Monster Hunter reddit sub
 router.get("/scrape", function (req, res) {
@@ -218,40 +218,40 @@ router.post("/api/articles/remove/:id", function (req, res) {
 });
 
 
-router.get("/api/user", function (req, res) {
-    // res.send("Get Users")
-});
+// router.get("/api/user", function (req, res) {
+//     // res.send("Get Users")
+// });
 
-router.post("/api/user", function (req, res) {
-    db.User.create(req.body, function (error, response) {
-        if (error) {
-            return res.json(error);
-        }
-        return res.json(response);
-    })
-})
+// router.post("/api/user", function (req, res) {
+//     db.User.create(req.body, function (error, response) {
+//         if (error) {
+//             return res.json(error);
+//         }
+//         return res.json(response);
+//     })
+// })
 
-router.post("/login", function (req, res) {
-    db.User.findOne({ username: req.body.username }, function (error, response) {
-        if (error) {
-            return res.json(error);
-        }
-        response.comparePassword(req.body.password, function (error, user) {
-            if (error) {
-                return res.json(error);
-            }
-            res.json(user);
-        });
-    })
-})
+// router.post("/login", function (req, res) {
+//     db.User.findOne({ username: req.body.username }, function (error, response) {
+//         if (error) {
+//             return res.json(error);
+//         }
+//         response.comparePassword(req.body.password, function (error, user) {
+//             if (error) {
+//                 return res.json(error);
+//             }
+//             res.json(user);
+//         });
+//     })
+// })
 
-router.put("/api/user/:id", function (req, res) {
-    res.send("Update Users")
-})
+// router.put("/api/user/:id", function (req, res) {
+//     res.send("Update Users")
+// })
 
-router.delete("/api/user/:id", function (req, res) {
-    res.send("Delete Users")
-})
+// router.delete("/api/user/:id", function (req, res) {
+//     res.send("Delete Users")
+// })
 
 
 

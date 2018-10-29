@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import SavedCard from "../../components/SavedCard";
-import {CardList} from "../../components/CardList";
+import { CardList } from "../../components/CardList";
 import API from "../../api/scraper.js";
 // import Modal from "../../components/Modal";
 
@@ -19,11 +19,8 @@ class SavedThreads extends Component {
     getSavedArticles = () => {
         console.log("getSavedArticle function called");
         API.getSavedThreads()
-            .then(function (response) {
-                console.log("Getting articles with saved = true");
-                console.log(response);
+            .then(response =>
                 this.setState({ savedArticles: response.data })
-            }
             )
             .catch(err => console.log(err));
     }
