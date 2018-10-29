@@ -8,7 +8,7 @@ const Card = props => (
         id={`mh-thread-${props._id}`}
     >
         <div className="card-header border-0 p-0">
-            <img className="my-auto" src={props.preview} style={{ height: "52px" }} />
+            <img className="my-auto" src={props.preview} style={{ height: "52px" }} alt="" />
         </div>
 
         <div className="card-body px-1">

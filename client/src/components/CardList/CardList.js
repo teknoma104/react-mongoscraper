@@ -1,11 +1,11 @@
 import React from "react";
 
 export const CardList = ({ children }) => {
-  return (
-    <div className="cardlist-overflow-container">
+    return (
+        <div className="cardlist-overflow-container">
 
-        {children}
+            {children}
 
-    </div>
-  );
+        </div>
+    )
 };
