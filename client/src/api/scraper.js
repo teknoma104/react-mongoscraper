@@ -24,8 +24,19 @@ const API = {
 
     saveThisThread: function (id) {
         return axios.post("/api/articles/save/" + id);
-    }
+    },
 
+    removeThisSavedThread: function (id) {
+        return axios.post("/api/articles/remove/" + id);
+    },
+    saveNewNote: function (id, userComment) {
+        return axios.post("/api/articles/" + id, { body: userComment });
+    },
+    deleteNote: function(articleID, noteID) {
+        console.log("testing articleID:  " + articleID);
+        console.log("testing noteID:  " + noteID);
+        return axios.post("/api/notes/delete/", { note_ID: noteID, article_ID: articleID });
+    }
 }
 
 export default API

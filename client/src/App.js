@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Jumbotron from "./components/Jumbotron";
 import { Row, Container } from "./components/Grid";
+import Footer from "./components/Footer";
 import API from "./api/scraper";
 import "./App.css";
 
@@ -67,6 +68,7 @@ class App extends Component {
                         </Row>
                         {/* </div> */}
                     </Container>
+                    <Footer />
                 </div>
             </Router>
         );

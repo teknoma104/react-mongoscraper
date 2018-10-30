@@ -153,6 +153,80 @@ router.get("/api/articles/:id", function (req, res) {
         });
 });
 
+
+// Route for saving an Article's associated Note
+router.post("/api/articles/:id", function (req, res) {
+    console.log("attempting to save comment");
+    console.log("testing req.body");
+    console.log(req.body);
+    console.log("testing req.params.id");
+    console.log(req.params.id);
+
+    var newNote = new db.Note({
+        body: req.body.body,
+        article: req.params.id
+    });
+
+    console.log("testing newNote");
+    console.log(newNote);
+
+    // Create a new note and pass newNote var to the entry
+    db.Note.create(newNote)
+        .then(function (dbNote) {
+            console.log("testing dbNote");
+            console.log(dbNote);
+            // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
+            // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+            // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { "notes": dbNote } }, { new: true });
+        })
+        .then(function (dbArticle) {
+            // If we were able to successfully update an Article, send it back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+});
+
+
+// Route to delete a specific note
+router.post("/api/notes/delete/", function (req, res) {
+    console.log("Delete Comment route hit");
+
+    console.log("testing req now");
+    console.log(req);
+
+    console.log("\n\n\ntesting req.body");
+    console.log(req.body);
+
+    const note_ID = req.body.note_ID;
+    const article_ID = req.body.article_ID;
+
+    // Use note_ID to find and delete the note from Note collection
+    db.Note.findOneAndRemove({ "_id": note_ID }, function (err) {
+        // Log any errors
+        if (err) {
+            console.log(err);
+            res.send(err);
+        }
+        else {
+            db.Article.findOneAndUpdate({ "_id": article_ID }, { $pull: { "notes": req.params.note_id } })
+                // Execute the above query
+                .then(function (dbArticle) {
+                    // If we were able to successfully update an Article, send it back to the client
+                    res.send("Comment deleted!");
+                })
+                .catch(function (err) {
+                    // If an error occurred, send it to the client
+                    res.json(err);
+                });
+        }
+    });
+});
+
+
 // // Route to get all articles with saved flag boolean true
 // router.get("/api/savedarticles123", function (req, res) {
 //     console.log("attempting to get all saved threads with save=true");
@@ -216,43 +290,6 @@ router.post("/api/articles/remove/:id", function (req, res) {
             res.json(err);
         });
 });
-
-
-// router.get("/api/user", function (req, res) {
-//     // res.send("Get Users")
-// });
-
-// router.post("/api/user", function (req, res) {
-//     db.User.create(req.body, function (error, response) {
-//         if (error) {
-//             return res.json(error);
-//         }
-//         return res.json(response);
-//     })
-// })
-
-// router.post("/login", function (req, res) {
-//     db.User.findOne({ username: req.body.username }, function (error, response) {
-//         if (error) {
-//             return res.json(error);
-//         }
-//         response.comparePassword(req.body.password, function (error, user) {
-//             if (error) {
-//                 return res.json(error);
-//             }
-//             res.json(user);
-//         });
-//     })
-// })
-
-// router.put("/api/user/:id", function (req, res) {
-//     res.send("Update Users")
-// })
-
-// router.delete("/api/user/:id", function (req, res) {
-//     res.send("Delete Users")
-// })
-
 
 
 module.exports = router;

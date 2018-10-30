@@ -16,7 +16,7 @@ const Nav = props => (
             <a className="nav-link" id="deleteall" onClick={() => props.deleteAllArticles()}>Delete All Threads</a>
         </li>
         <li className="nav-item">
-            <a className="nav-link" href="https://github.com/teknoma104/react-mongoscraper" target="_blank">GitHub Link</a>
+            <a className="nav-link" href="https://github.com/teknoma104/react-mongoscraper" target="_blank" rel="noopener noreferrer">GitHub Link</a>
         </li>
     </ul>
 );

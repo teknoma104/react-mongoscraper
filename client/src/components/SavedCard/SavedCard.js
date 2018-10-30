@@ -33,6 +33,7 @@ const Card = props => (
                 type="button"
                 className="btn btn-danger removeArticle"
                 data-id={props._id}
+                onClick={() => props.removeThisSavedThread(props._id)}
             >
                 Remove Saved Thread
                 </button>
