@@ -7,3 +7,7 @@ body {
   background: rgba(115,97,78,0.34);
   background-image: url("/assets/img/transparent_stone_bg.png");
 }
+
+.container {
+  margin-bottom: 50px;
+}
